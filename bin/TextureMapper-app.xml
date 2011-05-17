@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><application xmlns="http://ns.adobe.com/air/application/1.5.3" minimumPatchLevel="0">
+<!-- AIR Application Descriptor File. See http://www.adobe.com/go/learn_air_1.0_application_descriptor_en. -->
+	<id>TextureMapper</id>
+	<name>TextureMapper</name>
+	<version>1.0</version>
+	<filename>TextureMapper</filename>
+	<description>
+		<text xml:lang="en">Generate CSS sprite map for image</text>
+		<text xml:lang="ja">これは Adobe AIR のサンプルアプリケーションです。</text>
+	</description>
+	<copyright>Copyright 2011, cjgammon</copyright>
+	<initialWindow>
+		<content>TextureMapper.swf</content>
+		<title>CSS TextureMapper</title>
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<minimizable>true</minimizable>
+		<maximizable>true</maximizable>
+		<resizable>true</resizable>
+		<width>550</width>
+		<height>400</height>
+		<x>150</x>
+		<y>150</y>
+		<minSize>300 300</minSize>
+		<maxSize>1024 800</maxSize>
+	</initialWindow>
+	<installFolder>cjgammon/TextureMapper</installFolder>
+	<programMenuFolder>cjgammon/TextureMapper</programMenuFolder>
+	
+	<customUpdateUI>false</customUpdateUI>
+	<allowBrowserInvocation>false</allowBrowserInvocation>
+	<fileTypes>
+		<fileType>
+			<name>com.cjgammon</name>
+			<extension>xmpl</extension>
+			<description>Example file</description>
+			<contentType>example/x-data-type</contentType>
+
+			<icon>
+				<image128x128/>
+				<image48x48/>
+				<image32x32/>
+				<image16x16/></icon></fileType>
+	</fileTypes>
+</application>
