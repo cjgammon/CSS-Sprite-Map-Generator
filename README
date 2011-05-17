@@ -3,6 +3,7 @@
 *	by cjgammon
 *
 *	www.cjgammon.com
+*
 */
 
 This is a work in progress.  It is a css generator for using a single sprite sheet for multiple background images to reduce http requests.  

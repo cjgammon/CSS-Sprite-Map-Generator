@@ -1,4 +1,5 @@
 package {
+	import com.bit101.components.CheckBox;
 	import flash.events.Event;
 	import com.bit101.components.HSlider;
 	import flash.display.Bitmap;
@@ -39,6 +40,7 @@ package {
 		private var imagePathInput:InputText;
 		private var classNameInput:InputText;
 		private var opacitySlider:HSlider;
+		private var retinaCheckBox:CheckBox;
 		private var current : TImage;
 		
 		public function TextureMapper() {
@@ -66,7 +68,7 @@ package {
 		 	contentHolder.addChild(boxHolder);
 					
 			var utilityWindow:Window = new Window(this, 5, 5, "Tools");
-			utilityWindow.height = 200;
+			utilityWindow.height = 300;
 			utilityWindow.width = 110;
 			utilityWindow.alpha = .8;
 			utilityWindow.hasMinimizeButton = true;
@@ -89,6 +91,8 @@ package {
 			var label3:Label = new Label(utilityWindow, 5, 135, "opacity");
 			opacitySlider = new HSlider(utilityWindow, 5, 155, handle_opacitySlider_UPDATE);
 			opacitySlider.value = opacity;
+			
+			retinaCheckBox = new CheckBox(utilityWindow, 5, 180, "retina", handle_retinaCheckBox_UPDATE);
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handle_this_KEY_DOWN, false);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handle_this_KEY_UP, false);
@@ -221,6 +225,11 @@ package {
 			boxHolder.alpha = opacity/100;
 		}
 		
+		private function handle_retinaCheckBox_UPDATE(event:Event):void
+		{
+			_model.retina = event.target.selected;
+		}
+		
 		/*LOAD IMAGE*/
 		private function handle_loadImageButton_CLICK(e:MouseEvent):void
 		{
@@ -244,7 +253,7 @@ package {
 		private function handle_CSS_LOADED(array:Array):void
 		{
 			for(var i:int=0;i<array.length;i++){
-				addImageDefinition(array[i].x, array[i].y, array[i].width, array[i].height);
+				addImageDefinition(array[i].x, array[i].y, array[i].width, array[i].height, array[i].name);
 			}
 		}
 		
@@ -281,13 +290,16 @@ package {
 			}
 		}
 		
-		private function addImageDefinition(x:Number = 10, y:Number = 10, w:Number = 10, h:Number = 10):void
+		private function addImageDefinition(x:Number = 10, y:Number = 10, w:Number = 10, h:Number = 10, n:String = ""):void
 		{
 			var image:TImage;
 			if(w){
 				image = new TImage(x, y, w, h);				
 			}else{
 				image = new TImage(x, y);
+			}
+			if(n!==""){
+				image.update({name:n});
 			}
 			image.alpha = .5;
 			image.DESTROY.add(handle_image_DESTROY);
