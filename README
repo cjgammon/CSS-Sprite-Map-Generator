@@ -14,7 +14,7 @@ You can also load a css file created with Sprite Map Generator. There is also th
 So what do I do?
 1)load an image.
 2)add sprite slices
-	a)press 'D' to add a sprite frame.
+	a)press '=' to add a sprite frame.
 	b)drag the upper left corner to move the frame.
 	c)drag the lower right corner to resize the frame.
 	d)click the upper right corner to delete the frame.
