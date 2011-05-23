@@ -1,0 +1,29 @@
+/*
+*	CSS-Sprite-Map-Generator
+*	by cjgammon
+*
+*	www.cjgammon.com
+*
+*/
+
+This is a work in progress.  It is a css generator for using a single sprite sheet for multiple background images to reduce http requests.  
+
+You can also load a css file created with Sprite Map Generator. There is also the ability to specify retina images that are double the resolution to create css where they are sized at 1/2 the size of the image.
+
+
+So what do I do?
+1)load an image.
+2)add sprite slices
+	a)press 'D' to add a sprite frame.
+	b)drag the upper left corner to move the frame.
+	c)drag the lower right corner to resize the frame.
+	d)click the upper right corner to delete the frame.
+	e)selecting a frame allows you to type a new class name in the tool panel, press enter to confirm.
+3)after creating your sprite slices save out your CSS file. 
+
+
+KEYBOARD SHORTCUTS:
+
+D		: create sprite frame
+CMD+S 	: save css file
+;		: toggle snapping
