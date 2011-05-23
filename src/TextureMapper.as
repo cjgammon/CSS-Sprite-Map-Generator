@@ -41,6 +41,7 @@ package {
 		private var classNameInput:InputText;
 		private var opacitySlider:HSlider;
 		private var retinaCheckBox:CheckBox;
+		private var sassCheckBox:CheckBox;
 		private var current : TImage;
 		
 		public function TextureMapper() {
@@ -94,6 +95,8 @@ package {
 			
 			retinaCheckBox = new CheckBox(utilityWindow, 5, 180, "retina", handle_retinaCheckBox_UPDATE);
 			
+			sassCheckBox = new CheckBox(utilityWindow, 5, 200, "sass", handle_sassCheckBox_UPDATE);
+			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, handle_this_KEY_DOWN, false);
 			stage.addEventListener(KeyboardEvent.KEY_UP, handle_this_KEY_UP, false);
 		}
@@ -101,7 +104,7 @@ package {
 		private function handle_this_KEY_DOWN(e:KeyboardEvent):void
 		{
 			var nudgeValue:Number = snapping ? 10 : 1;
-			//trace(e.keyCode);
+			trace(e.keyCode);
 			
 			switch(e.keyCode){
 				case 13:	//RETURN
@@ -156,15 +159,21 @@ package {
 					}
 					break;
 				case 68:	//D
-					addImageDefinition(mouseX, mouseY);
+					addImageDefinition(mouseX-contentHolder.x, mouseY-contentHolder.y);
 					break;
 				case 83:	//S
-					if(CMD){
-						_model.saveCSS(imageDefinitions);					
+					if(CMD==true){
+					//	_model.saveCSS(imageDefinitions);					
 					}
 					break;
 				case 186:	//;
 					toggleSnapping();
+					break;
+				case 219:
+					getPrevious();
+					break;
+				case 221:
+					getNext();
 					break;
 			}
 		}
@@ -230,6 +239,11 @@ package {
 			_model.retina = event.target.selected;
 		}
 		
+		private function handle_sassCheckBox_UPDATE(event:Event):void
+		{
+			_model.sass = event.target.selected;
+		}
+		
 		/*LOAD IMAGE*/
 		private function handle_loadImageButton_CLICK(e:MouseEvent):void
 		{
@@ -275,6 +289,40 @@ package {
 				}
 			}
 			image = null;
+		}
+		
+		private function getNext():void
+		{
+			var num:int;
+			for(var i:int=0;i<imageDefinitions.length;i++){
+				if(imageDefinitions[i]==current){
+					num = i<imageDefinitions.length-1 ? i+1 : 0;
+				}
+			}
+			var target:TImage = imageDefinitions[num];
+			if(target&&boxHolder.numChildren>0){
+				target.alpha = 1;
+				boxHolder.setChildIndex(target, boxHolder.numChildren-1);
+			}
+			classNameInput.text = target.name;
+			current = target;		
+		}
+		
+		private function getPrevious():void
+		{
+			var num:int;
+			for(var i:int=0;i<imageDefinitions.length;i++){
+				if(imageDefinitions[i]==current){
+					num = i>0 ? i-1 : imageDefinitions.length-1;
+				}
+			}
+			var target:TImage = imageDefinitions[num];
+			if(target&&boxHolder.numChildren>0){
+				target.alpha = 1;
+				boxHolder.setChildIndex(target, boxHolder.numChildren-1);
+			}
+			classNameInput.text = target.name;
+			current = target;
 		}
 		
 		private function toggleSnapping():void
