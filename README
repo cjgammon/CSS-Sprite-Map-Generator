@@ -17,8 +17,7 @@ So what do I do?
 	a)press '=' to add a sprite frame.
 	b)drag the upper left corner to move the frame.
 	c)drag the lower right corner to resize the frame.
-	d)click the upper right corner to delete the frame.
-	e)selecting a frame allows you to type a new class name in the tool panel, press enter to confirm.
+	d)selecting a frame allows you to type a new class name in the tool panel, press enter to confirm.
 3)after creating your sprite slices save out your CSS file. 
 
 
