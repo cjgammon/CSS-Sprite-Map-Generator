@@ -159,7 +159,6 @@ package {
 					}
 					break;
 				case 68:	//D
-					addImageDefinition(mouseX-contentHolder.x, mouseY-contentHolder.y);
 					break;
 				case 83:	//S
 					if(CMD==true){
@@ -168,6 +167,14 @@ package {
 					break;
 				case 186:	//;
 					toggleSnapping();
+					break;
+				case 187:	//=
+					addImageDefinition(mouseX-contentHolder.x, mouseY-contentHolder.y);
+					break;
+				case 189:	//-
+					handle_image_DESTROY(current);
+					break;
+				case 192:	//~
 					break;
 				case 219:
 					getPrevious();
@@ -350,7 +357,7 @@ package {
 				image.update({name:n});
 			}
 			image.alpha = .5;
-			image.DESTROY.add(handle_image_DESTROY);
+			//image.DESTROY.add(handle_image_DESTROY);
 			image.addEventListener(MouseEvent.MOUSE_DOWN, handle_image_CLICK);
 			boxHolder.addChild(image);
 			imageDefinitions.push(image);

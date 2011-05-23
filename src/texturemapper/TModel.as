@@ -51,7 +51,7 @@ package texturemapper {
 				css = css.concat(".", image.name, "{", "\n");
 				css = css.concat("\t", "width:", imgW, "px;", "\n");
 				css = css.concat("\t", "height:", imgH, "px;", "\n");
-				css = css.concat("\t", "background:", imagePath, "\n");
+				css = css.concat("\t", "background:", imagePath, ";\n");
 				css = css.concat("\t", "background-position:", -imgX, "px ", -imgY, "px;", "\n");
 				css = css.concat("}", "\n\n");
 			}
@@ -76,7 +76,7 @@ package texturemapper {
 				css = css.concat(".", image.name, "{", "\n");
 				css = css.concat("\t", "width:", imgW, "px;", "\n");
 				css = css.concat("\t", "height:", imgH, "px;", "\n");
-				css = css.concat("\t", "background:", imagePath, "\n");
+				css = css.concat("\t", "background:", imagePath, ";\n");
 				css = css.concat("\t", "background-size:", bgW, "px ", bgH, "px;", "\n");
 				css = css.concat("\t", "background-position:", -imgX, "px ", -imgY, "px;", "\n");
 				css = css.concat("}", "\n\n");
@@ -104,7 +104,7 @@ package texturemapper {
 				css = css.concat(".", image.name, "{", "\n");
 				css = css.concat("\t", "width:", imgW, "px;", "\n");
 				css = css.concat("\t", "height:", imgH, "px;", "\n");
-				css = css.concat("\t", "background:", imagePath, "\n");
+				css = css.concat("\t", "background:", imagePath, ";\n");
 				css = css.concat("\t", "background-size:$street_map_size;", "\n");
 				css = css.concat("\t", "background-position:", -imgX, "px ", -imgY, "px;", "\n");
 				css = css.concat("}", "\n\n");
@@ -195,7 +195,7 @@ package texturemapper {
 		//convets css to object		
 		private function cssToObjects(css:String):void
 		{
-			var classes:Array = css.match(/\.[0-9A-Za-z]+([0-9A-Za-z]){/g);
+			var classes:Array = css.match(/\.[0-9A-Za-z_]+([0-9A-Za-z_]){/g);
 			var widths:Array = css.match(/width:[0-9]+(?:\.[0-9]*)?px/g);
 			var heights:Array = css.match(/height:[0-9]+(?:\.[0-9]*)?px/g);
 			var backgroundStrings:Array = css.match(/background-position:-?[0-9]+(?:\.[0-9]*)?px -?[0-9]+(?:\.[0-9]*)?px/g);
@@ -204,7 +204,7 @@ package texturemapper {
 			var objectArray:Array = [];
 			for(var i:int=0;i<classes.length;i++){
 				var imageObject:Object = {};
-				imageObject.name = classes[i].match(/[0-9A-Za-z]+([0-9A-Za-z])?/);
+				imageObject.name = classes[i].match(/[0-9A-Za-z_]+([0-9A-Za-z_])?/);
 				imageObject.name = imageObject.name.slice(0, -1);
 				imageObject.width = Number(widths[i].match(/[0-9]+(?:\.[0-9]*)?/));
 				imageObject.height = Number(heights[i].match(/[0-9]+(?:\.[0-9]*)?/));

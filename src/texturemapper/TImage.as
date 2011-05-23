@@ -64,7 +64,7 @@ package texturemapper {
 					case 1:
 						handle.x = square.width;
 						handle.y = square.y;
-						handle.addEventListener(MouseEvent.MOUSE_DOWN, handle_close_MOUSE_DOWN);
+						//handle.addEventListener(MouseEvent.MOUSE_DOWN, handle_close_MOUSE_DOWN);
 						break;
 					case 2:
 						handle.x = square.width;
@@ -129,11 +129,12 @@ package texturemapper {
 			positionText.text = position.x+","+position.y;	
 		}
 		
+		/*
 		private function handle_close_MOUSE_DOWN(e:MouseEvent):void
 		{
 			DESTROY.dispatch(this);			
 		}
-		
+		*/
 		private function handle_move_MOUSE_DOWN(e:MouseEvent):void
 		{
 			stage.addEventListener(MouseEvent.MOUSE_UP, handle_move_MOUSE_UP, true);
