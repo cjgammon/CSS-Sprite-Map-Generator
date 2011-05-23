@@ -24,6 +24,7 @@ So what do I do?
 
 KEYBOARD SHORTCUTS:
 
-D		: create sprite frame
-CMD+S 	: save css file
+=		: create sprite frame
+-		: delete sprite frame
 ;		: toggle snapping
+-hold space and drag to pan around image
